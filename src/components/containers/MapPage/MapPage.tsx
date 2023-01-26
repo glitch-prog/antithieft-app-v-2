@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {PermissionsAndroid, StyleSheet} from 'react-native';
 import {DocumentData} from 'firebase/firestore';
 import firestore from '@react-native-firebase/firestore';
@@ -13,22 +13,6 @@ export const MapPageContainer = () => {
     longitudeDelta: 0.0421,
   });
 
-  const [obj, setObj] = useState<
-    Record<'data', string> | DocumentData | undefined
-  >({
-    data: '53.919193,27.593078',
-  });
-
-  const getNewData = async () => {
-    firestore()
-      .collection('newCollection')
-      .doc('location')
-      .onSnapshot(documentSnapshot => {
-        setObj(documentSnapshot.data());
-        console.log('User data: ', documentSnapshot.data());
-        console.log('object data', obj?.data.split(','));
-      });
-  };
   const requestGeolocationPermission = useCallback(async () => {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {MainPageView} from '../../views/MainPage/MainPage';
 
 import firestore from '@react-native-firebase/firestore';
-import {app} from '../../../firebase/firebase-config';
 
 export const MainPageContainer = ({navigation}: any) => {
   const navigateToMaps = () => {

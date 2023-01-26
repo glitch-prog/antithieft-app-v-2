@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 import {Marker} from 'react-native-maps';
 
@@ -15,7 +15,7 @@ export const MarkerContainer = () => {
   });
 
   const getNewData = async () => {
-    await firestore()
+    firestore()
       .collection('newCollection')
       .doc('location')
       .onSnapshot(documentSnapshot => {
@@ -27,7 +27,7 @@ export const MarkerContainer = () => {
 
   useEffect(() => {
     getNewData();
-  });
+  }, [obj?.data]);
 
   return <MarkerView obj={obj} />;
 };

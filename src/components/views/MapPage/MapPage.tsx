@@ -1,8 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
 import MapView from 'react-native-maps';
-
-import {MarkerView} from '../Marker/Marker';
 import {IMapPageView} from './MapPage.interface';
 import {styles} from './MapPage.styles';
 import {MarkerContainer} from '../../containers/Marker/Marker';
