@@ -5,5 +5,6 @@ export interface ISignInPage {
   handleOnChangeEmail: (text: React.SetStateAction<string>) => void;
   handleOnChangeName: (text: React.SetStateAction<string>) => void;
   handleOnChangePassword: (text: React.SetStateAction<string>) => void;
+  handleOnPressNavigateToSignUp: () => void;
   signInUser: () => void;
 }

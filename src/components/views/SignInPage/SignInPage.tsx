@@ -1,6 +1,7 @@
 import React from 'react';
-import {Button, TextInput, View} from 'react-native';
+import {Button, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {ISignInPage} from './SignInPage.interface';
+import {styles} from './SignInPage.styles';
 
 export const SignInPageView = ({
   name,
@@ -9,29 +10,47 @@ export const SignInPageView = ({
   handleOnChangeEmail,
   handleOnChangeName,
   handleOnChangePassword,
+  handleOnPressNavigateToSignUp,
   signInUser,
 }: ISignInPage) => {
   return (
-    <View>
-      <TextInput
-        placeholder="name"
-        value={name}
-        onChangeText={handleOnChangeName}
-      />
+    <View style={styles.container}>
+      <View>
+        <TextInput
+          style={styles.signInput}
+          placeholder="Name"
+          value={name}
+          onChangeText={handleOnChangeName}
+        />
 
-      <TextInput
-        placeholder="email"
-        value={email}
-        onChangeText={handleOnChangeEmail}
-      />
+        <TextInput
+          keyboardType="email-address"
+          style={styles.signInput}
+          placeholder="Email"
+          value={email}
+          onChangeText={handleOnChangeEmail}
+        />
 
-      <TextInput
-        placeholder="password"
-        value={password}
-        onChangeText={handleOnChangePassword}
-      />
+        <TextInput
+          // keyboardType="visible-password"
+          style={styles.signInput}
+          placeholder="Password"
+          value={password}
+          onChangeText={handleOnChangePassword}
+        />
+      </View>
 
-      <Button onPress={signInUser} title="sign up" />
+      <TouchableOpacity style={styles.signBtn} onPress={signInUser}>
+        <Text style={styles.signBtnText}>Sign In</Text>
+      </TouchableOpacity>
+
+      <View>
+        <Text>Don't have an account?</Text>
+
+        <TouchableOpacity>
+          <Text onPress={handleOnPressNavigateToSignUp}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

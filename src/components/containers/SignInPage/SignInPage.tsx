@@ -2,7 +2,6 @@ import {signInWithEmailAndPassword} from 'firebase/auth';
 import React, {useState} from 'react';
 import {auth} from '../../../firebase/firebase-config';
 import {SignInPageView} from '../../views/SignInPage/SignInPage';
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 export const SignInPageContainer = ({navigation}: any) => {
   const [email, setEmail] = useState<string>('');
@@ -30,6 +29,10 @@ export const SignInPageContainer = ({navigation}: any) => {
 
   const handleOnChangePassword = (text: React.SetStateAction<string>) =>
     setPassword(text);
+
+  const handleOnPressNavigateToSignUp = () => {
+    navigation.navigate('Sign Up');
+  };
   return (
     <SignInPageView
       name={name}
@@ -39,6 +42,7 @@ export const SignInPageContainer = ({navigation}: any) => {
       handleOnChangeName={handleOnChangeName}
       handleOnChangeEmail={handleOnChangeEmail}
       handleOnChangePassword={handleOnChangePassword}
+      handleOnPressNavigateToSignUp={handleOnPressNavigateToSignUp}
     />
   );
 };

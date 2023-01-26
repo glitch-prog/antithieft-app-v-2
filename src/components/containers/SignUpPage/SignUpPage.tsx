@@ -45,6 +45,11 @@ export const SignUpPageContainer = ({navigation}: any) => {
 
   const handleOnChangePassword = (text: React.SetStateAction<string>) =>
     setPassword(text);
+
+  const handleOnPressNavigateToSignIn = () => {
+    navigation.navigate('Sign In');
+  };
+
   return (
     <SignUpPageView
       name={name}
@@ -54,6 +59,7 @@ export const SignUpPageContainer = ({navigation}: any) => {
       handleOnChangeName={handleOnChangeName}
       handleOnChangeEmail={handleOnChangeEmail}
       handleOnChangePassword={handleOnChangePassword}
+      handleOnPressNavigateToSignIn={handleOnPressNavigateToSignIn}
     />
   );
 };

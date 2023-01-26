@@ -4,6 +4,7 @@ import {DocumentData} from 'firebase/firestore';
 import firestore from '@react-native-firebase/firestore';
 import {MainPageView} from '../../views/MainPage/MainPage';
 import {CoordName} from '../../views/MapPage/MapPage.interface';
+import {MapPageView} from '../../views/MapPage/MapPage';
 
 export const MapPageContainer = () => {
   const [coord, setCoord] = useState<Record<CoordName, number>>({
@@ -37,9 +38,5 @@ export const MapPageContainer = () => {
     requestGeolocationPermission();
   }, []);
 
-  return <MainPageView coord={coord} />;
+  return <MapPageView coord={coord} />;
 };
-
-const styles = StyleSheet.create({
-  map: {width: '100%', height: '100%'},
-});

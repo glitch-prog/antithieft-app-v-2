@@ -16,6 +16,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {MainPageContainer} from './src/components/containers/MainPage/MainPage';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {MapPageView} from './src/components/views/MapPage/MapPage';
+import {SignInPageContainer} from './src/components/containers/SignInPage/SignInPage';
+import {SignUpPageContainer} from './src/components/containers/SignUpPage/SignUpPage';
+import {MapPageContainer} from './src/components/containers/MapPage/MapPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,8 +28,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen name="signIn" component={SignInPageContainer} /> */}
-        {/* <Stack.Screen name="signUp" component={SignUpPageContainer} /> */}
+        <Stack.Screen name="Sign In" component={SignInPageContainer} />
+        <Stack.Screen name="Sign Up" component={SignUpPageContainer} />
         <Stack.Screen
           name="main"
           component={MainPageContainer}
@@ -50,7 +53,7 @@ const App = () => {
         /> */}
         <Stack.Screen
           name="map"
-          component={MapPageView}
+          component={MapPageContainer}
           options={{
             headerTitle: 'Location',
             // headerLeft:'Button',

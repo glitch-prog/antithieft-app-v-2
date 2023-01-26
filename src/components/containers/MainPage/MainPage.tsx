@@ -29,8 +29,9 @@ export const MainPageContainer = ({navigation}: any) => {
   };
 
   const handleOnClickLocked = () => {
-    setIsEnabled(!isEnabled);
-    updateLockerState(isEnabled);
+    const status = !isEnabled;
+    setIsEnabled(status);
+    updateLockerState(status);
   };
 
   useEffect(() => {
