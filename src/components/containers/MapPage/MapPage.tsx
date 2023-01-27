@@ -1,8 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
-import {PermissionsAndroid, StyleSheet} from 'react-native';
-import {DocumentData} from 'firebase/firestore';
-import firestore from '@react-native-firebase/firestore';
-import {MainPageView} from '../../views/MainPage/MainPage';
+import {PermissionsAndroid, Platform} from 'react-native';
 import {CoordName} from '../../views/MapPage/MapPage.interface';
 import {MapPageView} from '../../views/MapPage/MapPage';
 
@@ -15,22 +12,25 @@ export const MapPageContainer = () => {
   });
 
   const requestGeolocationPermission = useCallback(async () => {
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      {
-        title: 'Geolocation permission',
-        message:
-          'We need access to your geolocation ' +
-          'so you can stay clear about location of your vehicle.',
-        buttonNeutral: 'Ask Me Later',
-        buttonNegative: 'Cancel',
-        buttonPositive: 'OK',
-      },
-    );
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      console.log('done');
+    if (Platform.OS == 'android') {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: 'Geolocation permission',
+          message:
+            'We need access to your geolocation ' +
+            'so you can stay clear about location of your vehicle.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('done');
+      } else {
+        console.log('Geolocation permission denied');
+      }
     } else {
-      console.log('Geolocation permission denied');
     }
   }, []);
 

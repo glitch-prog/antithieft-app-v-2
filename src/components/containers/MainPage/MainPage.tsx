@@ -11,11 +11,22 @@ export const MainPageContainer = ({navigation}: any) => {
 
   const [isEnabled, setIsEnabled] = useState<boolean>(false);
 
+  // const getLockerState = async () => {
+  //   const lockerState = await (
+  //     await firestore().collection('devices').doc('locker').get()
+  //   ).data()?.isLocked;
+  //   console.log(lockerState);
+  // };
+
   const getLockerState = async () => {
-    const lockerState = await (
-      await firestore().collection('devices').doc('locker').get()
-    ).data()?.isLocked;
-    console.log(lockerState);
+    firestore()
+      .collection('devices')
+      .doc('locker')
+      .onSnapshot(documentSnapshot => {
+        console.log(documentSnapshot.data());
+        const data = documentSnapshot.data();
+        setIsEnabled(data?.isLocked);
+      });
   };
 
   const updateLockerState = async (isEnabled: boolean) => {
@@ -36,7 +47,7 @@ export const MainPageContainer = ({navigation}: any) => {
 
   useEffect(() => {
     getLockerState();
-  });
+  }, []);
 
   return (
     <MainPageView
