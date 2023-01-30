@@ -9,7 +9,7 @@
  */
 
 // import {createStackNavigator} from '@react-navigation/stack';
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
@@ -19,12 +19,16 @@ import {MapPageView} from './src/components/views/MapPage/MapPage';
 import {SignInPageContainer} from './src/components/containers/SignInPage/SignInPage';
 import {SignUpPageContainer} from './src/components/containers/SignUpPage/SignUpPage';
 import {MapPageContainer} from './src/components/containers/MapPage/MapPage';
+import SplashScreen from 'react-native-splash-screen';
 
 const Stack = createNativeStackNavigator();
 
-const Tab = createBottomTabNavigator();
-
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+    console.log('componentDidMount');
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -35,7 +39,6 @@ const App = () => {
           component={MainPageContainer}
           options={{
             headerTitle: 'Main',
-            // headerLeft:'Button',
             headerStyle: {
               backgroundColor: '#F3F6F9',
             },
@@ -46,17 +49,11 @@ const App = () => {
             },
           }}
         />
-        {/* <Stack.Screen
-          name="register"
-          component={MainPageContainer}
-          options={{ title: "Options" }}
-        /> */}
         <Stack.Screen
           name="map"
           component={MapPageContainer}
           options={{
             headerTitle: 'Location',
-            // headerLeft:'Button',
             headerStyle: {
               backgroundColor: '#F3F6F9',
             },
