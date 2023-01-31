@@ -1,7 +1,11 @@
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import React, {useState} from 'react';
-import {auth} from '../../../firebase/firebase-config';
+
 import {SignInPageView} from '../../views/SignInPage/SignInPage';
+import auth from '@react-native-firebase/auth';
+import {FirebaseService} from '../../../services/firebase/firebase.service';
+
+const addToHistory = new FirebaseService().addToHistory;
 
 export const SignInPageContainer = ({navigation}: any) => {
   const [email, setEmail] = useState<string>('');
@@ -9,15 +13,25 @@ export const SignInPageContainer = ({navigation}: any) => {
   const [password, setPassword] = useState<string>('');
 
   const signInUser = () => {
-    const navigateToMainPage = () => navigation.navigate('main');
+    const navigateToMainPage = () => navigation.navigate('bottomNav');
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then(user => {
-        console.log(user);
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('succeed');
+        addToHistory(email, 'signed in');
         navigateToMainPage();
       })
       .catch(error => {
-        console.log(error);
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+
+        console.error(error);
       });
   };
 

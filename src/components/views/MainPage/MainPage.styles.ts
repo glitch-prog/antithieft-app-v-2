@@ -7,8 +7,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F3F6F9',
   },
   container: {
-    width: 320,
-    height: 500,
+    width: '80%',
+    height: '70%',
     // height:,
     marginTop: 'auto',
     marginBottom: 'auto',

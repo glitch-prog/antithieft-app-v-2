@@ -17,7 +17,7 @@ export const SignUpPageContainer = ({navigation}: any) => {
   }
 
   const signUpUser = async () => {
-    const navigateToMainPage = () => navigation.navigate('main');
+    const navigateToMainPage = () => navigation.navigate('bottomNav');
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {

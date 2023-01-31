@@ -10,6 +10,7 @@
 
 // import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect} from 'react';
+import './src/services/firebase/i18n/i18n';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
@@ -20,6 +21,9 @@ import {SignInPageContainer} from './src/components/containers/SignInPage/SignIn
 import {SignUpPageContainer} from './src/components/containers/SignUpPage/SignUpPage';
 import {MapPageContainer} from './src/components/containers/MapPage/MapPage';
 import SplashScreen from 'react-native-splash-screen';
+import {BottomNavigator} from './src/navigation/BottomNavigator/BottomNavigator';
+import {Button} from 'react-native';
+import SignOutBtn from './src/controls/SignOutBtn/SignOutBtn';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,10 +39,10 @@ const App = () => {
         <Stack.Screen name="Sign In" component={SignInPageContainer} />
         <Stack.Screen name="Sign Up" component={SignUpPageContainer} />
         <Stack.Screen
-          name="main"
-          component={MainPageContainer}
+          name="bottomNav"
+          component={BottomNavigator}
           options={{
-            headerTitle: 'Main',
+            headerTitle: 'AntitheftApp',
             headerStyle: {
               backgroundColor: '#F3F6F9',
             },
@@ -47,21 +51,7 @@ const App = () => {
               fontWeight: '900',
               fontSize: 24,
             },
-          }}
-        />
-        <Stack.Screen
-          name="map"
-          component={MapPageContainer}
-          options={{
-            headerTitle: 'Location',
-            headerStyle: {
-              backgroundColor: '#F3F6F9',
-            },
-            headerTintColor: '#000000',
-            headerTitleStyle: {
-              fontWeight: '900',
-              fontSize: 24,
-            },
+            headerLeft: () => <SignOutBtn />,
           }}
         />
       </Stack.Navigator>
