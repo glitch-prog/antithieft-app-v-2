@@ -12,17 +12,16 @@
 import React, {useEffect} from 'react';
 import './src/services/firebase/i18n/i18n';
 
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import {MainPageContainer} from './src/components/containers/MainPage/MainPage';
+
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {MapPageView} from './src/components/views/MapPage/MapPage';
+
 import {SignInPageContainer} from './src/components/containers/SignInPage/SignInPage';
 import {SignUpPageContainer} from './src/components/containers/SignUpPage/SignUpPage';
-import {MapPageContainer} from './src/components/containers/MapPage/MapPage';
+
 import SplashScreen from 'react-native-splash-screen';
 import {BottomNavigator} from './src/navigation/BottomNavigator/BottomNavigator';
-import {Button} from 'react-native';
+
 import SignOutBtn from './src/controls/SignOutBtn/SignOutBtn';
 
 const Stack = createNativeStackNavigator();
@@ -30,14 +29,41 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
-    console.log('componentDidMount');
   }, []);
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Sign In" component={SignInPageContainer} />
-        <Stack.Screen name="Sign Up" component={SignUpPageContainer} />
+        <Stack.Screen
+          name="Sign In"
+          component={SignInPageContainer}
+          options={{
+            headerStyle: {
+              backgroundColor: '#F3F6F9',
+            },
+            headerTintColor: '#000000',
+            headerTitleStyle: {
+              fontWeight: '900',
+              fontSize: 24,
+            },
+            headerTitleAlign: 'center',
+          }}
+        />
+        <Stack.Screen
+          name="Sign Up"
+          component={SignUpPageContainer}
+          options={{
+            headerStyle: {
+              backgroundColor: '#F3F6F9',
+            },
+            headerTintColor: '#000000',
+            headerTitleStyle: {
+              fontWeight: '900',
+              fontSize: 24,
+            },
+            headerTitleAlign: 'center',
+          }}
+        />
         <Stack.Screen
           name="bottomNav"
           component={BottomNavigator}
@@ -51,6 +77,7 @@ const App = () => {
               fontWeight: '900',
               fontSize: 24,
             },
+            headerTitleAlign: 'center',
             headerLeft: () => <SignOutBtn />,
           }}
         />

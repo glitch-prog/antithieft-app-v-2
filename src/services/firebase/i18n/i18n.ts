@@ -30,8 +30,8 @@ const resources = {
       'password field': 'Password',
       'sign in': 'Sign In',
       'sign up': 'Sign Up',
-      'no acc': `Don't have an account?`,
-      'yes acc': `Already have an account?`,
+      'no acc': 'Don`t have an account?',
+      'yes acc': 'Already have an account?',
     },
   },
   ru: {
@@ -63,8 +63,8 @@ const resources = {
       'password field': 'Пароль',
       'sign in': 'Войти',
       'sign up': 'Зарегистрироваться',
-      'no acc': `Нет аккаунта?`,
-      'yes acc': `Уже есть аккаунт?`,
+      'no acc': 'Нет аккаунта?',
+      'yes acc': 'Уже есть аккаунт?',
     },
   },
 };

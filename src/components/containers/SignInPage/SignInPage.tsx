@@ -1,9 +1,10 @@
-import {signInWithEmailAndPassword} from 'firebase/auth';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {SignInPageView} from '../../views/SignInPage/SignInPage';
 import auth from '@react-native-firebase/auth';
 import {FirebaseService} from '../../../services/firebase/firebase.service';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import i18next from 'i18next';
 
 const addToHistory = new FirebaseService().addToHistory;
 
@@ -12,26 +13,27 @@ export const SignInPageContainer = ({navigation}: any) => {
   const [name, setName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  const getData = async () => {
+    const value = await AsyncStorage.getItem('@lng');
+    console.log(value);
+    if (value !== null) {
+      i18next.changeLanguage(value, (err, t) => {
+        if (err) {
+          return console.log('something went wrong loading', err);
+        }
+        t('Welcome to React');
+      });
+    }
+  };
+
   const signInUser = () => {
     const navigateToMainPage = () => navigation.navigate('bottomNav');
 
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        console.log('succeed');
         addToHistory(email, 'signed in');
         navigateToMainPage();
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-
-        console.error(error);
       });
   };
 
@@ -47,6 +49,10 @@ export const SignInPageContainer = ({navigation}: any) => {
   const handleOnPressNavigateToSignUp = () => {
     navigation.navigate('Sign Up');
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <SignInPageView
       name={name}

@@ -1,5 +1,6 @@
 package com.testdiploma;
 
+
 import android.app.Application;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -10,8 +11,7 @@ import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
-// react-native-splash-screen < 0.3.1
-import com.cboy.rn.splashscreen.SplashScreenReactPackage;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,7 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
            //here
           // Packages that cannot be autolinked yet can be added manually here, for example:
-          packages.add(new SplashScreenReactPackage());
+          // packages.add(new SplashScreenReactPackage());
           return packages;
         }
 
@@ -55,7 +55,7 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
-    SplashScreen.show(this);
+    
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {

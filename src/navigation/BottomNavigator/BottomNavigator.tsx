@@ -1,5 +1,4 @@
-import {View, Text} from 'react-native';
-import React, {useTransition} from 'react';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MapPageContainer} from '../../components/containers/MapPage/MapPage';
 import {MainPageContainer} from '../../components/containers/MainPage/MainPage';
@@ -11,11 +10,11 @@ import {useTranslation} from 'react-i18next';
 const Tab = createBottomTabNavigator();
 
 export const BottomNavigator = () => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
+        tabBarIcon: ({focused}) => {
           let iconName: string = 'square';
 
           switch (route.name) {

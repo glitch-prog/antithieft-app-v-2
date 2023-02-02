@@ -14,7 +14,7 @@ const HistoryListItem = ({t, item}: any) => {
 };
 
 export const HistoryPageView = ({history}: any) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   return (
     <View>
       <FlatList

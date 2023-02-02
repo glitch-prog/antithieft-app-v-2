@@ -10,7 +10,7 @@ export const MainPageView = ({
   handleOnClickLocked,
   isEnabled,
 }: any) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   return (
     <View style={styles.screen}>
       <View style={styles.container}>

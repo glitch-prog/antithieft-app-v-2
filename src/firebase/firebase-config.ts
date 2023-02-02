@@ -1,19 +1,3 @@
-// import {initializeApp} from 'firebase/app';
-
-// import {getAuth} from 'firebase/auth';
-
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyBX_fgLM-LjRUoLqdPutUO4DHAP6IAu7zk',
-//   authDomain: 'mrecproject-33902.firebaseapp.com',
-//   projectId: 'mrecproject-33902',
-//   storageBucket: 'mrecproject-33902.appspot.com',
-//   messagingSenderId: '120579372006',
-//   appId: '1:120579372006:web:b48f172ccb62e91198dc27',
-// };
-
-// const app = initializeApp(firebaseConfig);
-
-import {firebase} from '@react-native-firebase/firestore';
 import {initializeApp} from 'firebase/app';
 import {getAuth} from 'firebase/auth';
 import {getFirestore} from 'firebase/firestore';

@@ -12,7 +12,7 @@ export const SettingPageView = ({
   setValue,
   setItems,
 }: any) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <View style={styles.settingOption}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {ISignInPage} from './SignInPage.interface';
 import {styles} from './SignInPage.styles';
 import {useTranslation} from 'react-i18next';
@@ -14,7 +14,7 @@ export const SignInPageView = ({
   handleOnPressNavigateToSignUp,
   signInUser,
 }: ISignInPage) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <View>
