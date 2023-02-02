@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import {SignUpPageView} from '../../views/SignUpPage/SignUpPage';
 import auth from '@react-native-firebase/auth';
 import {FirebaseService} from '../../../services/firebase/firebase.service';
+import {IMainPage} from '../MainPage/MainPage.interface';
 
 const addToHistory = new FirebaseService().addToHistory;
 
-export const SignUpPageContainer = ({navigation}: any) => {
+export const SignUpPageContainer = ({navigation}: IMainPage) => {
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [password, setPassword] = useState<string>('');

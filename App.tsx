@@ -24,7 +24,17 @@ import {BottomNavigator} from './src/navigation/BottomNavigator/BottomNavigator'
 
 import SignOutBtn from './src/controls/SignOutBtn/SignOutBtn';
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  'Sign In': undefined; // undefined because you aren't passing any params to the home screen
+  'Sign Up': undefined;
+  bottomNav: undefined;
+  Main: undefined;
+  Map: undefined;
+  History: undefined;
+  Settings: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
   useEffect(() => {

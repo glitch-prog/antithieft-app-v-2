@@ -6,12 +6,13 @@ import {useTranslation} from 'react-i18next';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {style} from './SignOutBtn.style';
 import {FirebaseService} from '../../services/firebase/firebase.service';
+import {IUser} from '../../components/containers/MainPage/MainPage.interface';
 
 const addToHistory = new FirebaseService().addToHistory;
 
 const SignOutBtn = () => {
   const {t} = useTranslation();
-  const [user, setUser] = useState<any>();
+  const [user, setUser] = useState<IUser | null>();
 
   const navigation =
     useNavigation<NavigationProp<ReactNavigation.RootParamList>>();
@@ -32,7 +33,9 @@ const SignOutBtn = () => {
         text: `${t('y msg')}`,
         onPress: () => {
           auth().signOut();
-          addToHistory(user?.email, 'sign out');
+          if (user?.email) {
+            addToHistory(user?.email, 'sign out');
+          }
           navigation.navigate('Sign In');
         },
       },

@@ -5,10 +5,11 @@ import auth from '@react-native-firebase/auth';
 import {FirebaseService} from '../../../services/firebase/firebase.service';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18next from 'i18next';
+import {IMainPage} from '../MainPage/MainPage.interface';
 
 const addToHistory = new FirebaseService().addToHistory;
 
-export const SignInPageContainer = ({navigation}: any) => {
+export const SignInPageContainer = ({navigation}: IMainPage) => {
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [password, setPassword] = useState<string>('');

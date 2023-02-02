@@ -4,11 +4,12 @@ import {MainPageView} from '../../views/MainPage/MainPage';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import {FirebaseService} from '../../../services/firebase/firebase.service';
+import {IMainPage, IUser} from './MainPage.interface';
 
 const addToHistory = new FirebaseService().addToHistory;
 
-export const MainPageContainer = ({navigation}: any) => {
-  const [user, setUser] = useState<any>();
+export const MainPageContainer = ({navigation}: IMainPage) => {
+  const [user, setUser] = useState<IUser>();
 
   const navigateToMaps = () => {
     const navigateToMapsPage = () => navigation.navigate('Map');
@@ -32,10 +33,12 @@ export const MainPageContainer = ({navigation}: any) => {
       isLocked: isEnabledStatus,
     });
 
-    addToHistory(
-      user?.email,
-      isEnabled ? 'Car was locked' : 'Car was unlocked',
-    );
+    if (user?.email) {
+      addToHistory(
+        user.email,
+        isEnabled ? 'Car was locked' : 'Car was unlocked',
+      );
+    }
   };
 
   const handleOnClickLocked = () => {
